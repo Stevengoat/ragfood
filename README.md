@@ -143,4 +143,3 @@ Made by Callum using:
 * [ChromaDB](https://www.trychroma.com)
 * [mxbai-embed-large](https://ollama.com/library/mxbai-embed-large)
 * Indian food inspiration 🍛
-
