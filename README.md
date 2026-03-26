@@ -1,9 +1,9 @@
-#  RAG-Food Enhanced (with 15 Diverse Food Items)
+RAG-Food Enhanced (with 15 Diverse Food Items)
 
-## Developer
+Developer
 - Name: Steven Carlo Lura
 
-## Project customization overview
+Project customization overview
 This enhanced version of RAG-Food adds 15 new, richly documented food items to `philippines_foods.json`, categorized as:
 - 5 regionally traditional dishes from Antipolo City, Philippines (cultural/regional cuisine background)
 - 5 healthy foods with detailed nutritional benefits
@@ -14,7 +14,7 @@ It features:
 - Comprehensive details per item: name, category, origin, description, ingredients, preparation, nutrition, cultural significance, dietary classifications
 - Validation script for testing queries
 
-## 🥘 15 Newly-added Food Items
+15 Newly-added Food Items
 
 | # | Name | Category | Origin | Description |
 |---|------|----------|--------|-------------|
@@ -34,7 +34,7 @@ It features:
 | 14 | Pasta Carbonara | Pasta Dish | Italy | Creamy pasta with eggs and pancetta; Roman classic. |
 | 15 | Thai Green Curry | Curry | Thailand | Spicy curry with coconut milk; Thai flavor balance.
 
-## Installation and setup
+Installation and setup
 1. `cd ragfood`
 2. Optional virtual env: `python -m venv venv && .\venv\Scripts\activate`
 3. `pip install chromadb requests`
@@ -46,7 +46,7 @@ It features:
    - `python rag_run.py` (loads main foods.json)
    - Or modify script to load `philippines_foods.json` for the diverse food data
 
-## 🧪 Validation test queries
+Validation test queries
 Use `python test_rag_queries.py` to run sample queries (adapt for diverse data):
 - What is Antipolo Ham?
 - What are some healthy foods high in protein?
@@ -60,7 +60,7 @@ Use `python test_rag_queries.py` to run sample queries (adapt for diverse data):
 - Ano ang Shakshuka with Spinach? (or Filipino dish)
 - Alin ang mga gluten-free na dishes?
 
-## 💬 Personal Reflection 
+Personal Reflection 
 Working on this RAG-Food project has been an eye-opening journey into the world of Retrieval-Augmented Generation and AI-driven systems. As a student from Far Eastern University, I initially approached this with curiosity about how machines could understand and respond to natural language queries about food. The process of curating 15 Filipino food items, all described in Filipino, deepened my appreciation for my cultural heritage while challenging me to think critically about data representation in AI.
 
 The technical aspects were daunting at first—setting up ChromaDB for vector embeddings, integrating Ollama for local LLM inference, and ensuring semantic search accuracy. I learned that RAG isn't just about feeding data to a model; it's about crafting context that allows the AI to reason and provide grounded answers. Debugging timeouts and connection issues with Ollama taught me patience and the importance of robust error handling in AI applications.
@@ -71,7 +71,7 @@ The experience also highlighted ethical considerations in AI, like ensuring dive
 
 Looking forward, I'm excited to apply these skills in future projects, perhaps in healthcare or education, where RAG could democratize access to information. This endeavor has transformed me from a passive AI user to an active builder, fostering a lifelong commitment to innovative, responsible AI development. (Word count: 312)
 
-## 📌 Important Notes
+Important Notes
 - All food descriptions are in Filipino for cultural authenticity.
 - To use Filipino data exclusively, modify `rag_run.py` to load `filipino_foods.json`.
 - Ensure Ollama is running for queries to work.
