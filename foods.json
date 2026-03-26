@@ -1,452 +1,227 @@
 [
   {
     "id": "1",
-    "text": "A banana is a yellow fruit that is soft and sweet.",
-    "region": "Tropical",
-    "type": "Fruit"
+    "name": "Antipolo Ham",
+    "category": "Meat",
+    "origin": "Antipolo City, Philippines",
+    "description": "Antipolo Ham is a sweet, glazed ham that originated from Antipolo City in the Philippines. It is a popular delicacy during Christmas and other festive occasions. The ham is cured and smoked, giving it a distinct flavor that combines sweetness from pineapple glaze with the savory taste of pork. This dish has become a staple in Filipino celebrations, symbolizing abundance and joy. Interestingly, Antipolo Ham is often associated with the city's religious festivals, particularly the Antipolo Pilgrimage. It is typically served sliced with a side of pineapple sauce or as part of a larger feast. The preparation involves curing the pork in brine, smoking it, and glazing with pineapple for a unique taste.",
+    "ingredients": "Pork leg, salt, sugar, pineapple juice, spices",
+    "preparation_method": "The pork is cured in brine, smoked, and glazed with pineapple",
+    "nutritional_highlights": "High in protein, but also high in sodium and sugar",
+    "cultural_significance": "Represents Filipino Christmas traditions",
+    "dietary_classifications": "Not vegetarian, not vegan, gluten-free",
+    "text": "Antipolo Ham is a sweet, glazed ham that originated from Antipolo City in the Philippines. It is a popular delicacy during Christmas and other festive occasions. The ham is cured and smoked, giving it a distinct flavor that combines sweetness from pineapple glaze with the savory taste of pork. This dish has become a staple in Filipino celebrations, symbolizing abundance and joy. Interestingly, Antipolo Ham is often associated with the city's religious festivals, particularly the Antipolo Pilgrimage. It is typically served sliced with a side of pineapple sauce or as part of a larger feast.",
+    "region": "Antipolo City, Philippines",
+    "type": "Meat"
   },
   {
     "id": "2",
-    "text": "A lemon is yellow and very sour.",
-    "region": "Tropical",
-    "type": "Fruit"
+    "name": "Antipolo Longganisa",
+    "category": "Sausage",
+    "origin": "Antipolo City, Philippines",
+    "description": "Antipolo Longganisa is a type of Filipino sausage known for its sweet and garlicky flavor. Originating from Antipolo City, this sausage is made from ground pork seasoned with garlic, vinegar, and sugar. It is a breakfast favorite in the Philippines, often served with garlic rice and eggs. The unique taste comes from the combination of sweet and savory elements, making it distinct from other sausages. Culturally, longganisa represents the fusion of Spanish and local influences in Filipino cuisine. Antipolo's version is particularly renowned for its quality and flavor. Preparation involves mixing ingredients, stuffing into casing, curing, and frying.",
+    "ingredients": "Ground pork, garlic, vinegar, sugar, salt",
+    "preparation_method": "Mix ingredients, stuff into casing, cure, and fry",
+    "nutritional_highlights": "High in protein and fat",
+    "cultural_significance": "Breakfast staple in Philippines",
+    "dietary_classifications": "Not vegetarian, not vegan, gluten-free",
+    "text": "Antipolo Longganisa is a type of Filipino sausage known for its sweet and garlicky flavor. Originating from Antipolo City, this sausage is made from ground pork seasoned with garlic, vinegar, and sugar. It is a breakfast favorite in the Philippines, often served with garlic rice and eggs. The unique taste comes from the combination of sweet and savory elements, making it distinct from other sausages. Culturally, longganisa represents the fusion of Spanish and local influences in Filipino cuisine. Antipolo's version is particularly renowned for its quality and flavor.",
+    "region": "Antipolo City, Philippines",
+    "type": "Sausage"
   },
   {
     "id": "3",
-    "text": "A chili pepper is red and extremely spicy.",
-    "region": "Various",
-    "type": "Spice"
+    "name": "Antipolo Bibingka",
+    "category": "Dessert",
+    "origin": "Antipolo City, Philippines",
+    "description": "Antipolo Bibingka is a traditional Filipino rice cake made from glutinous rice flour, coconut milk, and sugar. Originating from Antipolo City, this dessert is often topped with salted egg and cheese, giving it a unique savory-sweet flavor. It is commonly sold during the Simbang Gabi (nine dawn masses) leading to Christmas. The cake is steamed or baked, resulting in a soft, moist texture. Culturally, bibingka symbolizes the warmth of Filipino holidays and family gatherings. Antipolo's version is famous for its quality and is a must-try for visitors. Preparation includes mixing batter, steaming or baking, and topping with egg and cheese.",
+    "ingredients": "Glutinous rice flour, coconut milk, sugar, salted egg, cheese",
+    "preparation_method": "Mix batter, steam or bake, top with egg and cheese",
+    "nutritional_highlights": "High in carbohydrates, provides energy",
+    "cultural_significance": "Associated with Christmas traditions",
+    "dietary_classifications": "Vegetarian, can be vegan if no egg/cheese, gluten-free",
+    "text": "Antipolo Bibingka is a traditional Filipino rice cake made from glutinous rice flour, coconut milk, and sugar. Originating from Antipolo City, this dessert is often topped with salted egg and cheese, giving it a unique savory-sweet flavor. It is commonly sold during the Simbang Gabi (nine dawn masses) leading to Christmas. The cake is steamed or baked, resulting in a soft, moist texture. Culturally, bibingka symbolizes the warmth of Filipino holidays and family gatherings. Antipolo's version is famous for its quality and is a must-try for visitors.",
+    "region": "Antipolo City, Philippines",
+    "type": "Dessert"
   },
   {
     "id": "4",
-    "text": "An apple can be red, green, or yellow and has a sweet taste.",
-    "region": "Global",
-    "type": "Fruit"
+    "name": "Bulalo",
+    "category": "Soup",
+    "origin": "Antipolo City, Philippines",
+    "description": "Bulalo is a hearty beef shank soup that is a specialty in Antipolo City, Philippines. This dish features tender beef bones boiled with vegetables like corn, potatoes, and cabbage in a clear broth. It is known for its rich, flavorful taste derived from slow-cooking the beef. Bulalo is often enjoyed during cooler months or as a comfort food. Culturally, it represents the simplicity and warmth of Filipino home cooking. The dish is typically served with rice and a side of bagoong alamang (fermented shrimp paste). Antipolo's bulalo is particularly famous for its freshness and quality. Preparation involves boiling beef bones for hours, adding vegetables, and simmering.",
+    "ingredients": "Beef shank, corn, potatoes, cabbage, onions, garlic",
+    "preparation_method": "Boil beef bones for hours, add vegetables, simmer",
+    "nutritional_highlights": "High in protein, collagen for joint health",
+    "cultural_significance": "Comfort food in Philippines",
+    "dietary_classifications": "Not vegetarian, not vegan, gluten-free",
+    "text": "Bulalo is a hearty beef shank soup that is a specialty in Antipolo City, Philippines. This dish features tender beef bones boiled with vegetables like corn, potatoes, and cabbage in a clear broth. It is known for its rich, flavorful taste derived from slow-cooking the beef. Bulalo is often enjoyed during cooler months or as a comfort food. Culturally, it represents the simplicity and warmth of Filipino home cooking. The dish is typically served with rice and a side of bagoong alamang (fermented shrimp paste). Antipolo's bulalo is particularly famous for its freshness and quality.",
+    "region": "Antipolo City, Philippines",
+    "type": "Soup"
   },
   {
     "id": "5",
-    "text": "Biryani is a flavorful Indian rice dish made with spices, rice, and usually meat or vegetables.",
-    "region": "Hyderabad",
-    "type": "Main Course"
+    "name": "Sinigang",
+    "category": "Soup",
+    "origin": "Antipolo City, Philippines",
+    "description": "Sinigang is a sour soup made with tamarind that is popular in Antipolo City, Philippines. This dish typically includes pork, vegetables like eggplant, radish, and kangkong, cooked in a tangy broth. The sourness comes from tamarind pods, giving it a unique flavor profile. Sinigang is a staple in Filipino cuisine, often served with rice. Culturally, it reflects the use of local ingredients and the importance of sour flavors in Asian cooking. Antipolo's version might incorporate local produce, making it fresh and authentic. Preparation includes boiling pork, adding tamarind for sourness, and adding vegetables.",
+    "ingredients": "Pork, tamarind, eggplant, radish, kangkong, tomatoes",
+    "preparation_method": "Boil pork, add tamarind for sourness, add vegetables",
+    "nutritional_highlights": "Low in calories, high in vitamins from vegetables",
+    "cultural_significance": "Represents Filipino sour soups",
+    "dietary_classifications": "Not vegetarian, not vegan, gluten-free",
+    "text": "Sinigang is a sour soup made with tamarind that is popular in Antipolo City, Philippines. This dish typically includes pork, vegetables like eggplant, radish, and kangkong, cooked in a tangy broth. The sourness comes from tamarind pods, giving it a unique flavor profile. Sinigang is a staple in Filipino cuisine, often served with rice. Culturally, it reflects the use of local ingredients and the importance of sour flavors in Asian cooking. Antipolo's version might incorporate local produce, making it fresh and authentic.",
+    "region": "Antipolo City, Philippines",
+    "type": "Soup"
   },
   {
     "id": "6",
-    "text": "Samosa is a fried or baked pastry with a spicy potato filling, popular as a snack in India.",
-    "region": "North India",
-    "type": "Snack"
+    "name": "Quinoa",
+    "category": "Grain",
+    "origin": "Andean Region, South America",
+    "description": "Quinoa is a nutrient-dense seed that has been cultivated for thousands of years in the Andean region of South America. Often referred to as a superfood, it is rich in protein, fiber, and essential amino acids. Quinoa can be cooked like rice and used in salads, soups, or as a side dish. Its mild, nutty flavor makes it versatile in various cuisines. Nutritionally, it provides complete protein, making it ideal for vegetarians. Culturally, quinoa was a staple for ancient civilizations like the Incas. Today, it is globally popular for its health benefits. Preparation involves rinsing and boiling in water.",
+    "ingredients": "Quinoa seeds",
+    "preparation_method": "Rinse, boil in water",
+    "nutritional_highlights": "High in protein, fiber, iron, magnesium",
+    "cultural_significance": "Ancient Incan staple",
+    "dietary_classifications": "Vegetarian, vegan, gluten-free",
+    "text": "Quinoa is a nutrient-dense seed that has been cultivated for thousands of years in the Andean region of South America. Often referred to as a superfood, it is rich in protein, fiber, and essential amino acids. Quinoa can be cooked like rice and used in salads, soups, or as a side dish. Its mild, nutty flavor makes it versatile in various cuisines. Nutritionally, it provides complete protein, making it ideal for vegetarians. Culturally, quinoa was a staple for ancient civilizations like the Incas. Today, it is globally popular for its health benefits.",
+    "region": "Andean Region, South America",
+    "type": "Grain"
   },
   {
     "id": "7",
-    "text": "Paneer butter masala is a creamy tomato-based curry made with Indian cottage cheese.",
-    "region": "Punjab",
-    "type": "Main Course"
+    "name": "Kale",
+    "category": "Vegetable",
+    "origin": "Mediterranean Region",
+    "description": "Kale is a leafy green vegetable that originated in the Mediterranean region and has become a health food icon worldwide. It is packed with vitamins, minerals, and antioxidants, making it excellent for boosting immunity and overall health. Kale can be eaten raw in salads, sautéed, or added to smoothies. Its slightly bitter taste pairs well with dressings or other ingredients. Nutritionally, it is low in calories but high in vitamin K, A, and C. Culturally, kale has roots in ancient Roman cuisine and is now a staple in modern healthy eating trends. Preparation includes washing, chopping, and eating raw or cooking.",
+    "ingredients": "Kale leaves",
+    "preparation_method": "Wash, chop, eat raw or cook",
+    "nutritional_highlights": "High in vitamins A, C, K, antioxidants",
+    "cultural_significance": "Ancient Mediterranean vegetable",
+    "dietary_classifications": "Vegetarian, vegan, gluten-free",
+    "text": "Kale is a leafy green vegetable that originated in the Mediterranean region and has become a health food icon worldwide. It is packed with vitamins, minerals, and antioxidants, making it excellent for boosting immunity and overall health. Kale can be eaten raw in salads, sautéed, or added to smoothies. Its slightly bitter taste pairs well with dressings or other ingredients. Nutritionally, it is low in calories but high in vitamin K, A, and C. Culturally, kale has roots in ancient Roman cuisine and is now a staple in modern healthy eating trends.",
+    "region": "Mediterranean Region",
+    "type": "Vegetable"
   },
   {
     "id": "8",
-    "text": "Masala dosa is a thin, crispy fermented crepe filled with spicy mashed potatoes.",
-    "region": "South India",
-    "type": "Breakfast"
+    "name": "Salmon",
+    "category": "Fish",
+    "origin": "North Atlantic and Pacific Oceans",
+    "description": "Salmon is a fatty fish known for its rich, flavorful meat and numerous health benefits. Originating from the North Atlantic and Pacific Oceans, it is a popular seafood choice worldwide. Salmon can be grilled, baked, or smoked, and is often served with vegetables or in salads. Its omega-3 fatty acids are crucial for heart and brain health. Culturally, salmon has been a dietary staple for indigenous peoples in North America and Scandinavia. Today, farmed and wild salmon are widely consumed for their nutritional value. Preparation methods include grilling, baking, or smoking.",
+    "ingredients": "Salmon fillet",
+    "preparation_method": "Grill, bake, or smoke",
+    "nutritional_highlights": "High in omega-3, protein, vitamin D",
+    "cultural_significance": "Staple for indigenous communities",
+    "dietary_classifications": "Not vegetarian, not vegan, gluten-free",
+    "text": "Salmon is a fatty fish known for its rich, flavorful meat and numerous health benefits. Originating from the North Atlantic and Pacific Oceans, it is a popular seafood choice worldwide. Salmon can be grilled, baked, or smoked, and is often served with vegetables or in salads. Its omega-3 fatty acids are crucial for heart and brain health. Culturally, salmon has been a dietary staple for indigenous peoples in North America and Scandinavia. Today, farmed and wild salmon are widely consumed for their nutritional value.",
+    "region": "North Atlantic and Pacific Oceans",
+    "type": "Fish"
   },
   {
     "id": "9",
-    "text": "Chole is a spicy chickpea curry from North India, often eaten with rice or bhature.",
-    "region": "North India",
-    "type": "Main Course"
+    "name": "Blueberries",
+    "category": "Fruit",
+    "origin": "North America",
+    "description": "Blueberries are small, sweet berries native to North America, particularly valued for their antioxidant properties. They can be eaten fresh, added to cereals, or used in baking. The fruit's deep blue color comes from anthocyanins, which provide health benefits. Nutritionally, blueberries are low in calories but high in fiber and vitamin C. Culturally, they have been foraged by Native Americans for centuries and are now a symbol of healthy eating. Blueberries are versatile in both sweet and savory dishes. Preparation is simple: eat fresh or cook.",
+    "ingredients": "Blueberries",
+    "preparation_method": "Eat fresh or cook",
+    "nutritional_highlights": "High in antioxidants, fiber, vitamin C",
+    "cultural_significance": "Native American foraged fruit",
+    "dietary_classifications": "Vegetarian, vegan, gluten-free",
+    "text": "Blueberries are small, sweet berries native to North America, particularly valued for their antioxidant properties. They can be eaten fresh, added to cereals, or used in baking. The fruit's deep blue color comes from anthocyanins, which provide health benefits. Nutritionally, blueberries are low in calories but high in fiber and vitamin C. Culturally, they have been foraged by Native Americans for centuries and are now a symbol of healthy eating. Blueberries are versatile in both sweet and savory dishes.",
+    "region": "North America",
+    "type": "Fruit"
   },
   {
     "id": "10",
-    "text": "Rasgulla is a spongy dessert made from ball-shaped dumplings of chhena cooked in light syrup.",
-    "region": "Bengal",
-    "type": "Dessert"
+    "name": "Almonds",
+    "category": "Nut",
+    "origin": "Middle East and Central Asia",
+    "description": "Almonds are nutrient-rich nuts that originated in the Middle East and Central Asia. They are a great source of healthy fats, protein, and vitamins. Almonds can be eaten raw, roasted, or used in baking and cooking. Their crunchy texture and nutty flavor make them a popular snack. Nutritionally, they provide vitamin E, magnesium, and healthy monounsaturated fats. Culturally, almonds have been prized since ancient times and are used in various cuisines worldwide. They are also a key ingredient in almond milk and butter. Preparation is simple: eat raw or roast.",
+    "ingredients": "Almonds",
+    "preparation_method": "Eat raw or roast",
+    "nutritional_highlights": "High in healthy fats, vitamin E, magnesium",
+    "cultural_significance": "Ancient prized nut",
+    "dietary_classifications": "Vegetarian, vegan, gluten-free",
+    "text": "Almonds are nutrient-rich nuts that originated in the Middle East and Central Asia. They are a great source of healthy fats, protein, and vitamins. Almonds can be eaten raw, roasted, or used in baking and cooking. Their crunchy texture and nutty flavor make them a popular snack. Nutritionally, they provide vitamin E, magnesium, and healthy monounsaturated fats. Culturally, almonds have been prized since ancient times and are used in various cuisines worldwide. They are also a key ingredient in almond milk and butter.",
+    "region": "Middle East and Central Asia",
+    "type": "Nut"
   },
   {
     "id": "11",
-    "text": "Naan is a soft and fluffy flatbread that is traditionally baked in a tandoor.",
-    "region": "North India",
-    "type": "Bread"
+    "name": "Sushi",
+    "category": "Seafood Dish",
+    "origin": "Japan",
+    "description": "Sushi is a traditional Japanese dish consisting of vinegared rice combined with various ingredients like seafood, vegetables, and sometimes tropical fruits. It originated in Japan as a way to preserve fish. Sushi can be rolled (maki), pressed (nigiri), or served in bowls (chirashi). The preparation involves cooking rice with vinegar and assembling with fresh ingredients. Nutritionally, it provides protein from fish and carbohydrates from rice. Culturally, sushi represents Japanese culinary artistry and is enjoyed worldwide. Interesting fact: Sushi was initially a street food in Edo-period Japan. Cooking method: Cook rice, season with vinegar, assemble with toppings.",
+    "ingredients": "Rice, vinegar, fish, vegetables",
+    "preparation_method": "Cook rice, season with vinegar, assemble with toppings",
+    "nutritional_highlights": "Protein from fish, carbs from rice",
+    "cultural_significance": "Japanese tradition, global popularity",
+    "dietary_classifications": "Can be vegetarian, gluten-free if no soy sauce",
+    "text": "Sushi is a traditional Japanese dish consisting of vinegared rice combined with various ingredients like seafood, vegetables, and sometimes tropical fruits. It originated in Japan as a way to preserve fish. Sushi can be rolled (maki), pressed (nigiri), or served in bowls (chirashi). The preparation involves cooking rice with vinegar and assembling with fresh ingredients. Nutritionally, it provides protein from fish and carbohydrates from rice. Culturally, sushi represents Japanese culinary artistry and is enjoyed worldwide. Interesting fact: Sushi was initially a street food in Edo-period Japan.",
+    "region": "Japan",
+    "type": "Seafood Dish"
   },
   {
     "id": "12",
-    "text": "Tandoori chicken is chicken marinated in yogurt and spices, roasted in a tandoor.",
-    "region": "Punjab",
-    "type": "Main Course"
+    "name": "Paella",
+    "category": "Rice Dish",
+    "origin": "Spain",
+    "description": "Paella is a Spanish rice dish originating from Valencia, made with saffron-infused rice, seafood, chicken, and vegetables. It is cooked in a large, shallow pan called a paellera. The dish combines flavors of the sea and land, making it a communal meal. Preparation involves sautéing ingredients and simmering with rice. Nutritionally, it offers protein from meat and seafood, and vitamins from vegetables. Culturally, paella is a symbol of Spanish cuisine and is often prepared for gatherings. An interesting fact is that traditional paella uses local ingredients like rabbit and snails. Cooking method: Sauté ingredients, add rice and broth, simmer.",
+    "ingredients": "Rice, saffron, seafood, chicken, vegetables",
+    "preparation_method": "Sauté ingredients, add rice and broth, simmer",
+    "nutritional_highlights": "Protein, vitamins from veggies",
+    "cultural_significance": "Spanish communal dish",
+    "dietary_classifications": "Can be vegetarian, gluten-free",
+    "text": "Paella is a Spanish rice dish originating from Valencia, made with saffron-infused rice, seafood, chicken, and vegetables. It is cooked in a large, shallow pan called a paellera. The dish combines flavors of the sea and land, making it a communal meal. Preparation involves sautéing ingredients and simmering with rice. Nutritionally, it offers protein from meat and seafood, and vitamins from vegetables. Culturally, paella is a symbol of Spanish cuisine and is often prepared for gatherings. An interesting fact is that traditional paella uses local ingredients like rabbit and snails.",
+    "region": "Spain",
+    "type": "Rice Dish"
   },
   {
     "id": "13",
-    "text": "Gulab jamun is a deep-fried milk-solid ball soaked in sweet syrup, served as dessert.",
-    "region": "India",
-    "type": "Dessert"
+    "name": "Tacos",
+    "category": "Street Food",
+    "origin": "Mexico",
+    "description": "Tacos are a traditional Mexican dish consisting of a corn or wheat tortilla filled with various ingredients like meat, beans, cheese, and salsa. Originating from Mexico, they are a staple of street food culture. Tacos can be soft or hard-shelled, with fillings ranging from carnitas to fish. Preparation involves grilling or cooking the filling and assembling in tortillas. Nutritionally, they provide protein and fiber depending on fillings. Culturally, tacos represent Mexican heritage and are enjoyed globally. Interesting fact: The first tacos were likely eaten by indigenous peoples using corn tortillas. Cooking method: Cook filling, assemble in tortilla.",
+    "ingredients": "Tortillas, meat, beans, cheese, salsa",
+    "preparation_method": "Cook filling, assemble in tortilla",
+    "nutritional_highlights": "Protein, fiber",
+    "cultural_significance": "Mexican street food",
+    "dietary_classifications": "Can be vegetarian, gluten-free with corn tortillas",
+    "text": "Tacos are a traditional Mexican dish consisting of a corn or wheat tortilla filled with various ingredients like meat, beans, cheese, and salsa. Originating from Mexico, they are a staple of street food culture. Tacos can be soft or hard-shelled, with fillings ranging from carnitas to fish. Preparation involves grilling or cooking the filling and assembling in tortillas. Nutritionally, they provide protein and fiber depending on fillings. Culturally, tacos represent Mexican heritage and are enjoyed globally. Interesting fact: The first tacos were likely eaten by indigenous peoples using corn tortillas.",
+    "region": "Mexico",
+    "type": "Street Food"
   },
   {
     "id": "14",
-    "text": "Pav bhaji is a spicy vegetable mash served with soft buttered buns.",
-    "region": "Mumbai",
-    "type": "Snack"
+    "name": "Pasta Carbonara",
+    "category": "Pasta Dish",
+    "origin": "Italy",
+    "description": "Pasta Carbonara is a classic Italian pasta dish from Rome, made with eggs, cheese, pancetta, and black pepper. It originated in Italy and is known for its creamy sauce created by the heat of the pasta. The dish combines simple ingredients for a rich flavor. Preparation involves cooking pasta, sautéing pancetta, and mixing with egg and cheese. Nutritionally, it provides protein from eggs and pancetta, and carbohydrates from pasta. Culturally, it represents Roman cuisine and is a comfort food. Interesting fact: The name may derive from 'carbonari,' referring to charcoal workers. Cooking method: Boil pasta, sauté pancetta, mix with eggs and cheese.",
+    "ingredients": "Pasta, eggs, cheese, pancetta, pepper",
+    "preparation_method": "Boil pasta, sauté pancetta, mix with eggs and cheese",
+    "nutritional_highlights": "Protein, carbs",
+    "cultural_significance": "Roman classic",
+    "dietary_classifications": "Not vegetarian, not vegan, can be gluten-free with alternative pasta",
+    "text": "Pasta Carbonara is a classic Italian pasta dish from Rome, made with eggs, cheese, pancetta, and black pepper. It originated in Italy and is known for its creamy sauce created by the heat of the pasta. The dish combines simple ingredients for a rich flavor. Preparation involves cooking pasta, sautéing pancetta, and mixing with egg and cheese. Nutritionally, it provides protein from eggs and pancetta, and carbohydrates from pasta. Culturally, it represents Roman cuisine and is a comfort food. Interesting fact: The name may derive from 'carbonari,' referring to charcoal workers.",
+    "region": "Italy",
+    "type": "Pasta Dish"
   },
   {
     "id": "15",
-    "text": "Raita is a yogurt-based condiment that cools down spicy dishes.",
-    "region": "India",
-    "type": "Condiment"
-  },
-  {
-    "id": "16",
-    "text": "Dhokla is a soft and fluffy savory cake made from fermented rice and chickpea flour.",
-    "region": "Gujarat",
-    "type": "Snack"
-  },
-  {
-    "id": "17",
-    "text": "Butter chicken is a rich tomato gravy dish with tender pieces of marinated chicken.",
-    "region": "Delhi",
-    "type": "Main Course"
-  },
-  {
-    "id": "18",
-    "text": "Lassi is a cold yogurt drink blended with sugar, salt, or fruits like mango.",
-    "region": "Punjab",
-    "type": "Drink"
-  }, 
-   {
-    "id": "19",
-    "text": "Momo is a type of South Asian dumpling popular in Nepal, filled with meat or vegetables and served with spicy chutney.",
-    "region": "Nepal",
-    "type": "Snack"
-  },
-  {
-    "id": "20",
-    "text": "Sel roti is a traditional homemade, sweet, ring-shaped rice bread from Nepal.",
-    "region": "Nepal",
-    "type": "Dessert"
-  },
-  {
-    "id": "21",
-    "text": "Hilsa curry is a traditional Bengali dish made with hilsa fish and mustard gravy.",
-    "region": "Bangladesh",
-    "type": "Main Course"
-  },
-  {
-    "id": "22",
-    "text": "Bhuna khichuri is a spiced rice and lentil dish often served with beef curry in Bangladesh.",
-    "region": "Bangladesh",
-    "type": "Main Course"
-  },
-  {
-    "id": "23",
-    "text": "Nihari is a slow-cooked stew of beef or lamb, eaten as breakfast in Pakistan.",
-    "region": "Pakistan",
-    "type": "Main Course"
-  },
-  {
-    "id": "24",
-    "text": "Chicken Karahi is a spicy curry cooked in a wok-like pan called a karahi, popular in Pakistan.",
-    "region": "Pakistan",
-    "type": "Main Course"
-  },
-  {
-    "id": "25",
-    "text": "Pad Thai is a stir-fried noodle dish with shrimp, peanuts, and tamarind sauce, one of Thailand's national dishes.",
+    "name": "Thai Green Curry",
+    "category": "Curry",
+    "origin": "Thailand",
+    "description": "Thai Green Curry is a spicy and aromatic curry from Thailand, made with green curry paste, coconut milk, and various proteins and vegetables. It originated in Thailand and is characterized by its heat from green chilies. The dish is simmered to blend flavors. Preparation involves making the paste and cooking with coconut milk. Nutritionally, it offers protein and vitamins from ingredients. Culturally, it reflects Thai cuisine's balance of sweet, sour, salty, and spicy. Interesting fact: Green curry paste includes herbs like lemongrass and kaffir lime leaves. Cooking method: Simmer paste with coconut milk and ingredients.",
+    "ingredients": "Green curry paste, coconut milk, protein, vegetables",
+    "preparation_method": "Simmer paste with coconut milk and ingredients",
+    "nutritional_highlights": "Protein, vitamins",
+    "cultural_significance": "Thai flavor balance",
+    "dietary_classifications": "Can be vegetarian, vegan, gluten-free",
+    "text": "Thai Green Curry is a spicy and aromatic curry from Thailand, made with green curry paste, coconut milk, and various proteins and vegetables. It originated in Thailand and is characterized by its heat from green chilies. The dish is simmered to blend flavors. Preparation involves making the paste and cooking with coconut milk. Nutritionally, it offers protein and vitamins from ingredients. Culturally, it reflects Thai cuisine's balance of sweet, sour, salty, and spicy. Interesting fact: Green curry paste includes herbs like lemongrass and kaffir lime leaves.",
     "region": "Thailand",
-    "type": "Main Course"
-  },
-  {
-    "id": "26",
-    "text": "Tom Yum is a hot and sour Thai soup made with shrimp, lemongrass, and lime juice.",
-    "region": "Thailand",
-    "type": "Soup"
-  },
-  {
-    "id": "27",
-    "text": "Pho is a Vietnamese noodle soup consisting of broth, rice noodles, herbs, and meat.",
-    "region": "Vietnam",
-    "type": "Soup"
-  },
-  {
-    "id": "28",
-    "text": "Nasi Goreng is Indonesian-style fried rice often cooked with kecap manis, garlic, shallots, and chili.",
-    "region": "Indonesia",
-    "type": "Main Course"
-  },
-  {
-    "id": "29",
-    "text": "Rendang is a spicy meat dish slow-cooked in coconut milk and spices, originating from Indonesia.",
-    "region": "Indonesia",
-    "type": "Main Course"
-  },
-  {
-    "id": "30",
-    "text": "Nasi lemak is Malaysia's national dish consisting of fragrant rice cooked in coconut milk, served with sambal, anchovies, and egg.",
-    "region": "Malaysia",
-    "type": "Main Course"
-  },
-  {
-    "id": "31",
-    "text": "Adobo is a Filipino dish made by marinating meat in vinegar, soy sauce, and garlic, then simmering it.",
-    "region": "Philippines",
-    "type": "Main Course"
-  },
-  {
-    "id": "32",
-    "text": "Halo-halo is a Filipino dessert made from crushed ice, evaporated milk, and mixed ingredients like sweet beans, fruits, and jellies.",
-    "region": "Philippines",
-    "type": "Dessert"
-  }, 
-    {
-    "id": "33",
-    "text": "Peking duck is a famous Beijing dish featuring crispy roasted duck served with pancakes, hoisin sauce, and scallions.",
-    "region": "China",
-    "type": "Main Course"
-  },
-  {
-    "id": "34",
-    "text": "Kung Pao chicken is a spicy stir-fry dish made with chicken, peanuts, vegetables, and chili peppers.",
-    "region": "China",
-    "type": "Main Course"
-  },
-  {
-    "id": "35",
-    "text": "Mapo tofu is a Sichuan dish featuring soft tofu in a spicy chili and bean-based sauce, typically with minced pork.",
-    "region": "Sichuan, China",
-    "type": "Main Course"
-  },
-  {
-    "id": "36",
-    "text": "Xiao long bao are Chinese soup dumplings filled with meat and hot broth, typically served in a bamboo steamer.",
-    "region": "Shanghai",
-    "type": "Snack"
-  },
-  {
-    "id": "37",
-    "text": "Chow mein is a stir-fried noodle dish made with vegetables and sometimes meat or seafood.",
-    "region": "China",
-    "type": "Noodle"
-  },
-  {
-    "id": "38",
-    "text": "Hot and sour soup is a Chinese soup made with mushrooms, tofu, bamboo shoots, and egg, flavored with vinegar and white pepper.",
-    "region": "China",
-    "type": "Soup"
-  },
-  {
-    "id": "39",
-    "text": "Dim sum refers to a variety of small Chinese dishes served with tea, including dumplings, buns, and rolls.",
-    "region": "Cantonese, China",
-    "type": "Snack"
-  },
-  {
-    "id": "40",
-    "text": "Mooncake is a traditional Chinese pastry filled with lotus seed paste or red bean, eaten during the Mid-Autumn Festival.",
-    "region": "China",
-    "type": "Dessert"
-  }, 
-  {
-  "id": "41",
-  "text": "Kimchi is a traditional Korean side dish made from fermented vegetables, usually cabbage and radish, with chili pepper and garlic.",
-  "region": "Korea",
-  "type": "Side Dish"
-},
-{
-  "id": "42",
-  "text": "Bibimbap is a Korean mixed rice dish topped with sautéed vegetables, sliced meat, a fried egg, and chili paste.",
-  "region": "Korea",
-  "type": "Main Course"
-},
-{
-  "id": "43",
-  "text": "Tteokbokki is a popular Korean street food made of chewy rice cakes in a spicy red sauce.",
-  "region": "Korea",
-  "type": "Snack"
-}, 
-{
-  "id": "44",
-  "text": "Beef noodle soup is a beloved Taiwanese dish made with braised beef, vegetables, and noodles in a flavorful broth.",
-  "region": "Taiwan",
-  "type": "Soup"
-},
-{
-  "id": "45",
-  "text": "Lu rou fan is a classic Taiwanese comfort food of minced pork belly cooked in soy sauce, served over rice.",
-  "region": "Taiwan",
-  "type": "Main Course"
-},
-{
-  "id": "46",
-  "text": "Bubble tea is a Taiwanese drink made with tea, milk, and chewy tapioca pearls.",
-  "region": "Taiwan",
-  "type": "Drink"
-}, 
-{
-  "id": "47",
-  "text": "Char siu is a Cantonese-style barbecued pork known for its sweet and savory glaze.",
-  "region": "Hong Kong",
-  "type": "Main Course"
-},
-{
-  "id": "48",
-  "text": "Egg tarts are a popular Hong Kong dessert consisting of a flaky pastry crust filled with egg custard.",
-  "region": "Hong Kong",
-  "type": "Dessert"
-},
-{
-  "id": "49",
-  "text": "Wonton noodles are a Hong Kong dish made with thin egg noodles and wontons in a clear broth.",
-  "region": "Hong Kong",
-  "type": "Noodle"
-}, 
-{
-  "id": "50",
-  "text": "Meat pie is an iconic Australian dish consisting of a flaky pastry filled with minced meat and gravy.",
-  "region": "Australia",
-  "type": "Snack"
-},
-{
-  "id": "51",
-  "text": "Lamingtons are sponge cakes coated in chocolate and rolled in coconut, a popular Australian dessert.",
-  "region": "Australia",
-  "type": "Dessert"
-} ,
-{
-  "id": "52",
-  "text": "Pavlova is a meringue-based dessert topped with fresh fruit and cream, considered a national dish of New Zealand.",
-  "region": "New Zealand",
-  "type": "Dessert"
-},
-{
-  "id": "53",
-  "text": "Hangi is a traditional Māori method of cooking meat and vegetables in an underground oven.",
-  "region": "New Zealand",
-  "type": "Main Course"
-},
-{
-  "id": "54",
-  "text": "Palusami is a Polynesian dish of taro leaves filled with coconut cream and sometimes meat, baked in banana leaves.",
-  "region": "Samoa, South Pacific",
-  "type": "Main Course"
-},
-{
-  "id": "55",
-  "text": "Oka is a Samoan raw fish salad marinated in citrus and coconut milk, similar to ceviche.",
-  "region": "Samoa, South Pacific",
-  "type": "Appetizer"
-},
-{
-  "id": "56",
-  "text": "Lovo is a Fijian feast where food is wrapped in banana leaves and cooked in an earth oven.",
-  "region": "Fiji, South Pacific",
-  "type": "Main Course"
-}
-,
-{
-  "id": "57",
-  "text": "Kokoda is a Fijian dish of raw fish marinated in lime juice and coconut milk, similar to ceviche.",
-  "region": "Fiji, South Pacific",
-  "type": "Appetizer"
-},
-{
-  "id": "58",
-  "text": "Poke is a Hawaiian dish of diced raw fish, typically seasoned with soy sauce and sesame oil.",
-  "region": "Hawaii, USA",
-  "type": "Appetizer"
-},
-{
-  "id": "59",
-  "text": "Spam musubi is a Hawaiian snack made of rice and Spam wrapped in seaweed.",
-  "region": "Hawaii, USA",
-  "type": "Snack"
-},
-{  "id": "60",
-  "text": "Loco moco is a Hawaiian dish consisting of rice topped with a hamburger patty, fried egg, and brown gravy.",
-  "region": "Hawaii, USA",
-  "type": "Main Course"
-},
-{
-  "id": "61",
-  "text": "Sushi is a Japanese dish of vinegared rice combined with seafood, vegetables, and sometimes tropical fruits.",
-  "region": "Japan",
-  "type": "Main Course"
-},
-{
-  "id": "62",
-  "text": "Ramen is a Japanese noodle soup dish with Chinese-style wheat noodles served in a meat or fish-based broth.",
-  "region": "Japan",
-  "type": "Main Course"
-},
-{
-  "id": "63",
-  "text": "Tempura is a Japanese dish of seafood or vegetables that have been battered and deep-fried.",
-  "region": "Japan",
-  "type": "Main Course"
-},
-{
-  "id": "64",
-  "text": "Miso soup is a traditional Japanese soup consisting of a stock called dashi into which softened miso paste is mixed.",
-  "region": "Japan",
-  "type": "Soup"
-},
-{
-  "id": "65",
-  "text": "Okonomiyaki is a savory Japanese pancake containing a variety of ingredients.",
-  "region": "Japan",
-  "type": "Main Course"
-},
-{
-  "id": "66",
-  "text": "Hummus is a Middle Eastern dip or spread made from cooked, mashed chickpeas blended with tahini, olive oil, lemon juice, and garlic.",
-  "region": "Middle East",
-  "type": "Appetizer"
-},
-{
-  "id": "67",
-  "text": "Falafel consists of deep-fried balls of ground chickpeas or fava beans, typically served in pita bread.",
-  "region": "Middle East",
-  "type": "Main Course"
-},
-{
-  "id": "68",
-  "text": "Shawarma is a Middle Eastern meat preparation where thin slices of lamb, chicken, or beef are stacked and roasted on a vertical rotisserie.",
-  "region": "Middle East",
-  "type": "Main Course"
-},
-{
-  "id": "69",
-  "text": "Tabbouleh is a Levantine vegetarian salad made of finely chopped parsley, tomatoes, mint, and bulgur.",
-  "region": "Middle East",
-  "type": "Salad"
-},
-{
-  "id": "70",
-  "text": "Baklava is a rich, sweet dessert pastry made of layers of filo filled with chopped nuts and sweetened with syrup or honey.",
-  "region": "Middle East",
-  "type": "Dessert"
-},
-{
-  "id": "71",
-  "text": "Buuz are Mongolian steamed dumplings filled with minced meat, typically mutton or beef.",
-  "region": "Mongolia",
-  "type": "Main Course"
-},
-{
-  "id": "72",
-  "text": "Khorkhog is a Mongolian barbecue dish where meat is cooked with hot stones inside a sealed container.",
-  "region": "Mongolia",
-  "type": "Main Course"
-},
-{
-  "id": "73",
-  "text": "Airag is a traditional Mongolian alcoholic drink made from fermented mare's milk.",
-  "region": "Mongolia",
-  "type": "Beverage"
-},
-{
-  "id": "74",
-  "text": "Boortsog are Mongolian deep-fried cookies often served with tea or used as a dessert.",
-  "region": "Mongolia",
-  "type": "Dessert"
-},
-{
-  "id": "75",
-  "text": "Suutei tsai is a traditional Mongolian milk tea made with green tea, milk, water, and salt.",
-  "region": "Mongolia",
-  "type": "Beverage"
-}
+    "type": "Curry"
+  }
 ]
