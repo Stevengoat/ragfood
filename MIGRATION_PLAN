@@ -1,0 +1,455 @@
+# PRD: Migrate Local ChromaDB RAG to Upstash Vector
+
+## Objective
+- **Primary:** Replace local ChromaDB + manual Ollama embeddings with Upstash Vector Database (auto embeddings)
+- **Goals:**
+  - Preserve user-facing RAG behavior (interactive CLI, top context, LLM answer generation)
+  - Remove local embedding generation complexity
+  - Move vector indexing/query to managed serverless service
+- **Non-goals:**
+  - Change LLM provider (Ollama llama3.2 stays)
+  - Rewrite to web service (CLI-first remains)
+
+## Current State (Before)
+- **Pipeline in `rag_run.py`:**
+  - Load foods.json
+  - Create/open local Chroma collection
+  - For each item:
+    - Build enriched text
+    - Generate embedding via local Ollama (mxbai-embed-large)
+    - Upsert into Chroma with documents/embeddings/ids
+  - On query:
+    - Embed question using Ollama
+    - Query Chroma with embedding vector
+    - Build context from top documents
+    - Send prompt to Ollama generation endpoint
+- **Pain points:**
+  - Two inference calls for embeddings (ingest + query) in app code
+  - Local vector DB tied to machine disk
+  - Operational coupling to local embedding model availability
+  - Manual dedup logic increases complexity
+
+## Target State (After)
+- **Upstash Vector Configuration:**
+  - Model: mixedbread-ai/mxbai-embed-large-v1
+  - Dimensions: 1024
+  - Sequence length: 512
+  - Similarity: cosine
+- **Target pipeline:**
+  - Load foods.json
+  - Initialize Upstash Index client using .env credentials
+  - For each item:
+    - Build enriched text
+    - Upsert raw text (data) + metadata + id to Upstash
+  - On query:
+    - Call Upstash query(data=<question>, top_k=3) with raw question text
+    - Receive nearest matches
+    - Build context from returned text
+    - Send prompt to Ollama generation endpoint
+- **Results:**
+  - No embedding vectors in application code
+  - No local vector store persistence required
+  - Retrieval quality preserved with similar embedding family
+
+## Architecture Comparison
+- **Before (Chroma local):**
+  - Storage: local disk (chroma_db/)
+  - Embeddings: local Ollama embed endpoint
+  - Query input: precomputed query vector
+  - Ingestion input: precomputed document vector
+  - Failure domain: local process, filesystem, model runtime
+- **After (Upstash managed):**
+  - Storage: Upstash managed serverless vector index
+  - Embeddings: Upstash built-in embedding model
+  - Query input: raw text query
+  - Ingestion input: raw text document
+  - Failure domain: network/API/auth/rate limits (not local embedding)
+- **Architectural implications:**
+  - Simpler app logic (remove get_embedding and vector plumbing)
+  - Added dependency on internet and Upstash availability
+  - Better portability and multi-machine data consistency
+
+## API Differences and Implications
+- **Ingestion API mapping:**
+  - Before (Chroma): `collection.add(documents=[...], embeddings=[...], ids=[...])`
+  - After (Upstash): `index.upsert([(id, raw_text, metadata)])`
+  - Implication: Remove manual embedding call, metadata stores region/type/original text
+- **Query API mapping:**
+  - Before (Chroma): `collection.query(query_embeddings=[q_emb], n_results=3)`
+  - After (Upstash): `index.query(data=question, top_k=3, include_metadata=True)`
+  - Implication: Query accepts raw text; Upstash embeds internally, app parses result schema
+- **Auth:**
+  - Before: no external auth for local Chroma
+  - After: token-based auth with Upstash REST URL + token
+  - Implication: Validate env vars at startup, prefer least-privilege token split (read-only vs full)
+
+## Implementation Plan
+- **Phase 0: Prerequisites**
+  - Ensure Upstash vector index created with embedding model mxbai-embed-large-v1 and cosine similarity
+  - Set env vars: UPSTASH_VECTOR_REST_URL, UPSTASH_VECTOR_REST_TOKEN
+  - Install dependency: upstash-vector
+- **Phase 1: Introduce vector store adapter**
+  - Create abstraction for retrieval logic stability
+  - Implement UpstashVectorStore with upsert_foods() and query()
+  - Normalize return format with id, text, score, metadata
+- **Phase 2: Replace ingestion flow**
+  - Remove get_embedding() function
+  - Replace Chroma dedup logic (recommend Option A: always upsert all IDs)
+  - Keep text enrichment strategy (region, type) as raw text
+- **Phase 3: Replace query flow**
+  - Remove query embedding generation
+  - Use direct Upstash text query
+  - Normalize results to internal context format
+  - Keep top_k=3 and same prompt template
+- **Phase 4: Authentication and startup checks**
+  - Validate required env vars at startup
+  - Fail fast with clear message if missing
+  - Optionally instantiate two clients (ingest with full token, query with read-only)
+- **Phase 5: Error handling and resilience**
+  - Handle timeouts, rate limits (429), transient errors (5xx), auth errors (401/403)
+  - Retry with exponential backoff + jitter for transient errors
+  - Fail fast for auth errors with token guidance
+  - Graceful fallback message for users
+- **Phase 6: Validation and rollout**
+  - Build fixed query regression set from README samples
+  - Compare top-3 relevance before vs after
+  - Use feature flag: VECTOR_BACKEND=chroma|upstash
+  - Keep Chroma path for rollback
+
+## Code Structure Changes Required
+- **Minimal-change approach (single file):**
+  - Remove imports: chromadb
+  - Remove constants: CHROMA_DIR, COLLECTION_NAME, EMBED_MODEL
+  - Add imports: from upstash_vector import Index, from dotenv import load_dotenv
+  - Replace Chroma setup with Upstash Index setup
+  - Delete get_embedding() function
+  - Update ingestion loop to call index.upsert(...) with raw text
+  - Update rag_query() to call index.query(data=question, top_k=3)
+- **Recommended maintainable approach:**
+  - rag_run.py: app orchestration and CLI loop
+  - vector_store.py: Upstash client + ingest/query normalization
+  - llm_client.py: Ollama generation call
+  - config.py: env loading and validation
+  - Benefits: easier testing, cleaner backend swaps, reduced risk
+
+## Error Handling Strategy
+- **Categories:**
+  - Configuration errors: fail fast at startup with actionable error text
+  - Network/timeouts: retries with capped exponential backoff
+  - API/auth failures (401/403): no retry, print clear guidance
+  - Rate limits (429): obey retry headers, else backoff
+  - Partial ingestion failures: batch-level retry + dead-letter logging
+- **User-facing behavior:**
+  - If retrieval fails: "I could not access the knowledge index right now. Please try again shortly."
+  - Keep CLI interactive loop alive
+
+## Performance Considerations
+- **Expected changes:**
+  - Ingestion latency per item may increase due to network call, but local embedding compute removed
+  - Query latency includes network RTT + managed embedding + vector search
+  - For small datasets, absolute latency acceptable for CLI use
+- **Optimization levers:**
+  - Batch upserts instead of per-record upserts
+  - Keep top_k modest (3-5)
+  - Avoid overly long text payloads (model sequence 512 tokens)
+  - Cache repeated query results (optional)
+- **Quality considerations:**
+  - Upstash model is high quality for semantic retrieval (MTEB benchmark)
+  - Since model differs from local Ollama, retrieval ranking may shift
+  - Validate with regression queries
+
+## Cost Implications (Cloud vs Local)
+- **Local Chroma + local embeddings:**
+  - Direct cloud cost: near-zero
+  - Hidden cost: local compute, setup friction, machine-specific persistence, maintenance
+- **Upstash Vector:**
+  - Direct cost: usage-based (storage, requests, vector operations)
+  - Benefits: managed operations, no local DB, easier scaling, shared data
+- **Cost control recommendations:**
+  - Use batch ingestion
+  - Avoid unnecessary re-upserts
+  - Use read-only token for query clients
+  - Monitor request volume and index size from Upstash dashboard
+
+## Security Considerations for API Keys
+- Never hardcode tokens in source
+- Keep .env out of version control
+- Use least privilege:
+  - Read-only token for runtime query
+  - Admin token only for ingestion/maintenance
+- Rotate tokens on suspected exposure
+- Do not log tokens or full auth headers
+- In CI/deploy: inject secrets via environment manager, not files
+- Add startup redaction logic for config logging
+- Treat any token in public channels/logs as compromised and rotate immediately
+
+## Proposed Data Mapping in Upstash
+- **For each food item:**
+  - id: item id
+  - data: enriched text for semantic retrieval
+  - metadata:
+    - text: original text
+    - region
+    - type
+- **Benefits:**
+  - Strong retrieval from enriched narrative text
+  - Faithful response generation using original text in prompt context
+
+## Testing and Acceptance Criteria
+- **Functional acceptance:**
+  - App starts successfully with Upstash config
+  - Ingestion completes without embedding API calls to Ollama
+  - Query returns top-3 relevant docs from Upstash
+  - Answer generation flow remains unchanged from user perspective
+- **Non-functional acceptance:**
+  - Error messages are actionable and non-sensitive
+  - Query p95 latency remains acceptable for CLI (< 3-5s target)
+  - No secret leakage in logs
+- **Regression tests:**
+  - Use existing README sample queries
+  - Compare answer relevance before/after
+
+## Migration Checklist
+- [ ] Add upstash-vector and python-dotenv dependencies
+- [ ] Remove ChromaDB dependency from runtime path
+- [ ] Implement UpstashVectorStore adapter
+- [ ] Replace embedding generation with raw text upsert/query
+- [ ] Add env validation and token strategy
+- [ ] Add retry/backoff and error categorization
+- [ ] Validate retrieval quality with sample query set
+- [ ] Add backend switch flag for temporary rollback
+- [ ] Update README setup instructions
+
+## Risks and Mitigations
+- **Retrieval ranking shifts:** Regression test set, tune enrichment text and top_k
+- **Cloud dependency/network outages:** Retries, graceful errors, optional cached fallback
+- **Unexpected cost growth:** Monitor usage, reduce duplicate upserts, tune batch cadence
+- **Token leakage risk:** Strict secret handling, rotation policy, least privilege
+
+## Recommended Next Step
+- Implement migration behind backend flag (VECTOR_BACKEND=upstash) so Chroma remains as short-term fallback during validation
+# PRD: Migrate Local Ollama LLM to Groq Cloud API
+
+## Objective
+- **Primary:** Replace local Ollama llama3.2 generation call with Groq Cloud API (llama-3.1-8b-instant)
+- **Keep:** Same RAG behavior, prompt structure, user-facing CLI experience
+- **Goals:**
+  - Remove dependency on locally running Ollama process
+  - Reduce generation latency (Groq LPU hardware faster than local CPU/GPU)
+  - Enable usage from any machine without model setup
+- **Non-goals:**
+  - Change vector retrieval layer (covered separately)
+  - Enable streaming responses
+  - Switch to different LLM family
+
+## Current State (Before)
+- **Pipeline in rag_run.py:**
+  - Build context from ChromaDB top-3 docs
+  - Construct prompt string (context + question)
+  - POST to localhost:11434/api/generate with raw prompt
+  - Extract answer from response.json()["response"]
+- **Pain points:**
+  - Ollama must be installed, running, and have llama3.2 pulled locally
+  - Inference speed varies by local hardware
+  - Cannot run in environments without GPU/Ollama installation
+  - Local process management is hidden operational dependency
+
+## Target State (After)
+- **Implementation:**
+  - Import Groq SDK
+  - Set LLM_MODEL = "llama-3.1-8b-instant"
+  - Create Groq client with GROQ_API_KEY
+  - Call groq_client.chat.completions.create()
+  - Extract answer from choices[0].message.content
+- **Pipeline:**
+  - Build context from vector store top-3 docs
+  - Construct same prompt string (context + question)
+  - POST to Groq chat completions endpoint via SDK
+  - Extract answer from choices[0].message.content
+- **Result:**
+  - No local Ollama process required
+  - No local model download
+  - Groq LPU inference (low latency, faster than local)
+  - Same prompt structure and answer quality tier (Llama 3.1 8B ≈ Llama 3.2)
+
+## Architecture Comparison (Groq)
+- **Before (Local Ollama):**
+  - User input → Embed question (Ollama) → ChromaDB query → Build prompt → POST localhost:11434/api/generate → Print answer
+  - Dependency chain: Python → Ollama process → local model weights
+- **After (Groq Cloud):**
+  - User input → Embed question (Upstash/Ollama) → Vector DB query → Build prompt → POST api.groq.com/openai/v1/chat/completions → Print answer
+  - Dependency chain: Python → Groq SDK → Groq API (network)
+- **Key shifts:**
+  - Hosting: Local machine → Groq Cloud (managed)
+  - Request: Raw prompt string → OpenAI-compatible chat messages
+  - Auth: None (localhost) → Bearer token (GROQ_API_KEY)
+  - Response: response.json()["response"] → choices[0].message.content
+  - Setup: Install Ollama + pull model → Set env var
+  - Speed: Varies by hardware → Consistent low-latency LPU
+  - Cost: Compute electricity → Usage-based (tokens in/out)
+
+## API Differences and Implications (Groq)
+- **Request format change:**
+  - Before (Ollama): Single prompt field with full instruction block to localhost:11434/api/generate
+  - After (Groq): Messages array with role/content objects to api.groq.com
+  - Implication: Same prompt text moves into content of user message
+- **Response format change:**
+  - Before: response.json()["response"].strip()
+  - After: chat_completion.choices[0].message.content.strip()
+- **Authentication change:**
+  - Before: No auth (local endpoint)
+  - After: Groq SDK reads GROQ_API_KEY from environment automatically
+  - Implication: Never hardcode key in source code
+
+## Detailed Implementation Plan (Groq)
+- **Phase 0: Prerequisites**
+  - Install Groq Python SDK: pip install groq
+  - Set GROQ_API_KEY in .env
+  - Install python-dotenv if not present: pip install python-dotenv
+- **Phase 1: Add environment loading**
+  - Add load_dotenv() at top of rag_run.py
+  - Must run before any os.environ access
+- **Phase 2: Replace Ollama generation call**
+  - Remove LLM_MODEL = "llama3.2"
+  - Remove requests.post() block to localhost:11434
+  - Remove response.json()["response"] extraction
+  - Add: from groq import Groq
+  - Add: LLM_MODEL = "llama-3.1-8b-instant"
+  - Add: groq_client = Groq(api_key=os.environ["GROQ_API_KEY"])
+  - Replace generation logic with groq_client.chat.completions.create()
+- **Phase 3: Startup validation**
+  - Check for missing GROQ_API_KEY at startup
+  - Raise EnvironmentError if missing
+- **Phase 4: Error handling**
+  - Catch AuthenticationError, RateLimitError, APIError
+  - Provide user-friendly error messages
+  - Never expose API key in errors
+- **Phase 5: Validation**
+  - Use 10 sample queries from README
+  - Compare response relevance before vs after
+  - Compare response latency
+
+## Code Structure Changes (Groq)
+- **Minimal-change approach (single file):**
+  - Remove: requests.post(...api/generate...) block
+  - Remove: response.json()["response"].strip()
+  - Remove: LLM_MODEL = "llama3.2"
+  - Add: from groq import Groq
+  - Add: from dotenv import load_dotenv; load_dotenv()
+  - Add: groq_client = Groq(api_key=os.environ[...])
+  - Add: LLM_MODEL = "llama-3.1-8b-instant"
+  - Replace: Generation call with groq_client.chat.completions.create()
+- **Recommended maintainable approach:**
+  - Create llm_client.py module
+  - Move Groq client init and generation logic
+  - rag_run.py calls llm_client.generate()
+  - Benefits: isolated, testable, swappable
+
+## Error Handling Strategy (Groq)
+- **Error classes:**
+  - EnvironmentError (missing GROQ_API_KEY): Fail fast before any I/O
+  - AuthenticationError (invalid/expired key): No retry, print rotation guidance
+  - RateLimitError (quota exceeded): Exponential backoff, notify user to wait
+  - APIError 5xx (service issue): Retry up to 3 times with backoff
+  - APIError 4xx (bad request, too-long prompt): Log length, trim context, retry once
+  - requests.Timeout (network timeout): Retry once, fail gracefully
+  - General Exception (unexpected): Catch-all, safe message, keep CLI up
+- **User-facing messages:**
+  - Never expose API key or internal paths
+  - Provide actionable guidance (check API key, retry later)
+  - Don't crash interactive loop
+
+## Performance Considerations (Groq)
+- **Latency:**
+  - Groq LPU hardware 5-10x faster than CPU-based local inference
+  - Token generation latency ~150-300ms for this model/prompt size
+  - Network RTT ~50-150ms (offset by faster inference)
+- **Context window:**
+  - llama-3.1-8b-instant: 128k tokens
+  - Current prompt well within limits (3 docs + question)
+- **Token budgeting:**
+  - Average prompt: ~200-400 tokens (3 short descriptions + question)
+  - Expected output: ~100-300 tokens
+  - Very low per-query token cost
+- **Prompt safety:**
+  - Avoid very long prompts if food descriptions grow
+  - Keep top_k=3
+  - Trim enriched text if >300 tokens per doc to avoid 4xx errors
+
+## Cost Implications (Groq)
+- **Local Ollama:**
+  - No cloud API cost
+  - Runs on local hardware (electricity, hardware wear)
+  - Requires setup per machine
+- **Groq Cloud:**
+  - Usage-based: charged per million input/output tokens
+  - llama-3.1-8b-instant is among lowest-cost models on Groq
+  - For food RAG: average 300 tokens in + 200 tokens out
+  - 1,000 queries/month = negligible cost (fraction of $1)
+  - Free tier available for development
+- **Cost control measures:**
+  - Use smallest effective model (llama-3.1-8b-instant)
+  - Keep top_k=3 and short enriched docs
+  - Add query character limit in CLI
+  - Monitor usage in Groq dashboard
+
+## Security Considerations (Groq)
+- Never commit GROQ_API_KEY to source control
+- Ensure .env is listed in .gitignore
+- Do not print or log os.environ["GROQ_API_KEY"]
+- Treat key as secret par with database password
+- Rotate immediately if exposed in logs/error output
+- In deployment: inject secrets via environment variables, not files
+- Groq keys can be scoped/revoked from console
+- Prefer short-lived keys for CI pipelines
+
+## Testing and Acceptance Criteria (Groq)
+- **Functional acceptance:**
+  - App starts with valid GROQ_API_KEY and no Ollama process running
+  - Ingestion flow unaffected (generation not involved)
+  - rag_query() returns coherent, relevant answer from Groq
+  - Error conditions (bad key, rate limit, network down) produce safe messages without crashing
+- **Non-functional acceptance:**
+  - First-answer latency perceptibly faster than local Ollama on CPU
+  - No API key or sensitive data in stdout/stderr
+  - App behaves correctly when GROQ_API_KEY missing (fail-fast error at startup)
+- **Regression test set:**
+  - 10 README sample queries
+  - Verify answers remain contextually relevant
+  - Expected context types: Adobo (Filipino dish), protein sources, Filipino foods, vegan options, grillable items, Sinigang (soup), gluten-free, Spanish cuisine, Halo-Halo (dessert), rice dishes
+
+## Migration Checklist (Groq)
+- [ ] Install groq Python package
+- [ ] Install python-dotenv if not present
+- [ ] Confirm GROQ_API_KEY in .env and .env in .gitignore
+- [ ] Add load_dotenv() call at top of rag_run.py
+- [ ] Add startup env validation for GROQ_API_KEY
+- [ ] Replace LLM_MODEL constant
+- [ ] Remove Ollama generation requests.post() call
+- [ ] Add Groq client initialization
+- [ ] Replace generation call with groq_client.chat.completions.create()
+- [ ] Replace response extraction with choices[0].message.content
+- [ ] Add error handling for AuthenticationError, RateLimitError, APIError
+- [ ] Run regression queries from README
+- [ ] Remove requests import if Ollama embedding also migrated
+- [ ] Update README setup instructions
+
+## Interaction with Upstash Migration
+- **If both migrations implemented together:**
+  - requests library can be removed entirely (no more Ollama calls)
+  - Only two external dependencies at runtime: groq (LLM), upstash-vector (retrieval)
+  - Both cloud-hosted with API key auth from .env
+- **Full removal from rag_run.py:**
+  - import chromadb, import requests
+  - CHROMA_DIR, COLLECTION_NAME, EMBED_MODEL, LLM_MODEL = "llama3.2"
+  - get_embedding() function
+  - ChromaDB client and collection setup
+  - Ollama embed and generate requests.post() calls
+
+## Risks and Mitigations
+- **Groq outage/degradation:** Retry with backoff, clear user message, optional fallback to Ollama if available
+- **API key expiry/revocation:** Fail-fast at startup with rotation guidance
+- **Rate limiting during testing:** Add delay between regression queries
+- **Answer quality regression vs Llama 3.2:** Regression test set, models architecturally equivalent
+- **Unexpected token cost spike:** Monitor Groq console, add input length guard
+- **.env key accidentally committed:** Ensure .gitignore correct before first commit
