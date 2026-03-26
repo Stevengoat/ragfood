@@ -4,13 +4,16 @@ import chromadb
 import requests
 
 # Constants
-CHROMA_DIR = "chroma_db"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CHROMA_DIR = os.path.join(BASE_DIR, "chroma_db")
 COLLECTION_NAME = "foods"
-JSON_FILE = "foods.json"
+JSON_FILE = os.path.join(BASE_DIR, "foods.json")
 EMBED_MODEL = "mxbai-embed-large"
 LLM_MODEL = "llama3.2"
 
-# Load data
+# Load data (path is script-relative so script can run from any cwd)
+if not os.path.exists(JSON_FILE):
+    raise SystemExit(f"Error: required data file not found: {JSON_FILE}")
 with open(JSON_FILE, "r", encoding="utf-8") as f:
     food_data = json.load(f)
 
