@@ -1,9 +1,9 @@
-# 🧠 RAG-Food Enhanced (with 15 Diverse Food Items)
+#  RAG-Food Enhanced (with 15 Diverse Food Items)
 
-## 👤 Developer
+## Developer
 - Name: Steven Carlo Lura
 
-## ✨ Project customization overview
+## Project customization overview
 This enhanced version of RAG-Food adds 15 new, richly documented food items to `philippines_foods.json`, categorized as:
 - 5 regionally traditional dishes from Antipolo City, Philippines (cultural/regional cuisine background)
 - 5 healthy foods with detailed nutritional benefits
@@ -15,23 +15,26 @@ It features:
 - Validation script for testing queries
 
 ## 🥘 15 Newly-added Food Items
-1. **Antipolo Ham** (Meat, Antipolo City, Philippines) - Sweet, glazed ham cured and smoked with pineapple glaze; symbolizes Filipino Christmas traditions.
-2. **Antipolo Longganisa** (Sausage, Antipolo City, Philippines) - Sweet and garlicky sausage; breakfast staple in Philippines.
-3. **Antipolo Bibingka** (Dessert, Antipolo City, Philippines) - Rice cake topped with salted egg and cheese; associated with Christmas traditions.
-4. **Bulalo** (Soup, Antipolo City, Philippines) - Hearty beef shank soup; comfort food in Philippines.
-5. **Sinigang** (Soup, Antipolo City, Philippines) - Sour tamarind soup; represents Filipino sour soups.
-6. **Quinoa** (Grain, Andean Region, South America) - Nutrient-dense seed; ancient Incan staple, high in protein.
-7. **Kale** (Vegetable, Mediterranean Region) - Leafy green packed with vitamins; ancient Mediterranean vegetable.
-8. **Salmon** (Fish, North Atlantic and Pacific Oceans) - Fatty fish with omega-3; staple for indigenous communities.
-9. **Blueberries** (Fruit, North America) - Antioxidant-rich berries; Native American foraged fruit.
-10. **Almonds** (Nut, Middle East and Central Asia) - Nutrient-rich nuts; ancient prized nut.
-11. **Sushi** (Seafood Dish, Japan) - Vinegared rice with seafood; Japanese tradition, global popularity.
-12. **Paella** (Rice Dish, Spain) - Saffron-infused rice with seafood and chicken; Spanish communal dish.
-13. **Tacos** (Street Food, Mexico) - Tortilla filled with meat and salsa; Mexican street food.
-14. **Pasta Carbonara** (Pasta Dish, Italy) - Creamy pasta with eggs and pancetta; Roman classic.
-15. **Thai Green Curry** (Curry, Thailand) - Spicy curry with coconut milk; Thai flavor balance.
 
-## 📦 Installation and setup
+| # | Name | Category | Origin | Description |
+|---|------|----------|--------|-------------|
+| 1 | Antipolo Ham | Meat | Antipolo City, Philippines | Sweet, glazed ham cured and smoked with pineapple glaze; symbolizes Filipino Christmas traditions. |
+| 2 | Antipolo Longganisa | Sausage | Antipolo City, Philippines | Sweet and garlicky sausage; breakfast staple in Philippines. |
+| 3 | Antipolo Bibingka | Dessert | Antipolo City, Philippines | Rice cake topped with salted egg and cheese; associated with Christmas traditions. |
+| 4 | Bulalo | Soup | Antipolo City, Philippines | Hearty beef shank soup; comfort food in Philippines. |
+| 5 | Sinigang | Soup | Antipolo City, Philippines | Sour tamarind soup; represents Filipino sour soups. |
+| 6 | Quinoa | Grain | Andean Region, South America | Nutrient-dense seed; ancient Incan staple, high in protein. |
+| 7 | Kale | Vegetable | Mediterranean Region | Leafy green packed with vitamins; ancient Mediterranean vegetable. |
+| 8 | Salmon | Fish | North Atlantic and Pacific Oceans | Fatty fish with omega-3; staple for indigenous communities. |
+| 9 | Blueberries | Fruit | North America | Antioxidant-rich berries; Native American foraged fruit. |
+| 10 | Almonds | Nut | Middle East and Central Asia | Nutrient-rich nuts; ancient prized nut. |
+| 11 | Sushi | Seafood Dish | Japan | Vinegared rice with seafood; Japanese tradition, global popularity. |
+| 12 | Paella | Rice Dish | Spain | Saffron-infused rice with seafood and chicken; Spanish communal dish. |
+| 13 | Tacos | Street Food | Mexico | Tortilla filled with meat and salsa; Mexican street food. |
+| 14 | Pasta Carbonara | Pasta Dish | Italy | Creamy pasta with eggs and pancetta; Roman classic. |
+| 15 | Thai Green Curry | Curry | Thailand | Spicy curry with coconut milk; Thai flavor balance.
+
+## Installation and setup
 1. `cd ragfood`
 2. Optional virtual env: `python -m venv venv && .\venv\Scripts\activate`
 3. `pip install chromadb requests`
@@ -57,7 +60,7 @@ Use `python test_rag_queries.py` to run sample queries (adapt for diverse data):
 - Ano ang Shakshuka with Spinach? (or Filipino dish)
 - Alin ang mga gluten-free na dishes?
 
-## 💬 Personal Reflection (Nero Andrek Solon)
+## 💬 Personal Reflection 
 Working on this RAG-Food project has been an eye-opening journey into the world of Retrieval-Augmented Generation and AI-driven systems. As a student from Far Eastern University, I initially approached this with curiosity about how machines could understand and respond to natural language queries about food. The process of curating 15 Filipino food items, all described in Filipino, deepened my appreciation for my cultural heritage while challenging me to think critically about data representation in AI.
 
 The technical aspects were daunting at first—setting up ChromaDB for vector embeddings, integrating Ollama for local LLM inference, and ensuring semantic search accuracy. I learned that RAG isn't just about feeding data to a model; it's about crafting context that allows the AI to reason and provide grounded answers. Debugging timeouts and connection issues with Ollama taught me patience and the importance of robust error handling in AI applications.
